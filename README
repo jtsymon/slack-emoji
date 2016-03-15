@@ -1,0 +1,32 @@
+Fetching:
+
+    Generate an API token for the source slack: https://api.slack.com/docs/oauth-test-tokens
+
+    Paste the token into fetch.sh
+
+    Run fetch.sh
+
+
+Uploading:
+
+    Create directories of images and aliases (or use fetch.sh if moving from another slack)
+
+        images/ contains emoji image named with their emoji name
+
+        aliases/ contains text files named with their emoji name, containing the name of another emoji to link to
+
+    Set the destination slack in upload.sh
+
+    Copy your slack cookies for the destination slack
+    
+        Press F12 in your browser
+
+        Click the network tab
+
+        Refresh slack
+
+        Copy the Cookie value from Request Headers
+
+    Paste the cookies into upload.sh
+
+    Run upload.sh
