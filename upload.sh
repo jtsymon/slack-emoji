@@ -15,7 +15,7 @@ for file in images/*; do
         -F "crumb=$crumb" \
         -F "mode=data" \
         -F "name=$(basename $file)" \
-        -F "img=@$file"
+        -F "img=@$file" >/dev/null
 done
 
 for file in aliases/*; do
@@ -25,5 +25,5 @@ for file in aliases/*; do
         -F "crumb=$crumb" \
         -F "mode=alias" \
         -F "name=$(basename $file)" \
-        -F "alias=$(cat $file)"
+        -F "alias=$(cat $file)" >/dev/null
 done
