@@ -9,21 +9,25 @@ URL="https://${TEAM}.slack.com/customize/emoji"
 crumb=$(curl $URL -H "Cookie: $COOKIE" | grep -oP '<input.*?name="crumb".*?value="\K[^"]*(?=")')
 
 for file in images/*; do
+    name="$(basename $file)"
+    name="${name%.*}"
     curl $URL \
         -H "Cookie: $COOKIE" \
         -F "add=1" \
         -F "crumb=$crumb" \
         -F "mode=data" \
-        -F "name=$(basename $file)" \
+        -F "name=$name" \
         -F "img=@$file" >/dev/null
 done
 
 for file in aliases/*; do
+    name="$(basename $file)"
+    name="${name%.*}"
     curl $URL \
         -H "Cookie: $COOKIE" \
         -F "add=1" \
         -F "crumb=$crumb" \
         -F "mode=alias" \
-        -F "name=$(basename $file)" \
+        -F "name=$name" \
         -F "alias=$(cat $file)" >/dev/null
 done
